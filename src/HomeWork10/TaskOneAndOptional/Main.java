@@ -18,9 +18,9 @@ public class Main {
         System.out.println("Comparing different objects: " + user1.equals(user3));
 
         UserOptional[] userOptionalOriginal = new UserOptional[3];
-        userOptionalOriginal[0] = new UserOptional(1, "Julia", 2455710);
-        userOptionalOriginal[1] = new UserOptional(2, "Masha", 2173710);
-        userOptionalOriginal[2] = new UserOptional(3, "Roman", 9454516);
+        userOptionalOriginal[0] = new UserOptional(1, "Julia", 2455710, user1);
+        userOptionalOriginal[1] = new UserOptional(2, "Masha", 2173710, user2);
+        userOptionalOriginal[2] = new UserOptional(3, "Roman", 9454516, user3);
 
         System.out.println("\nAvailable users: ");
         for (UserOptional user : userOptionalOriginal) {

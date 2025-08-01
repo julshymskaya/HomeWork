@@ -2,7 +2,7 @@ package HomeWork10.TaskOneAndOptional;
 
 import java.util.Objects;
 
-public class User {
+public class User implements Cloneable {
     private String firstName;
     private String lastName;
     private int phoneNumber;
@@ -58,5 +58,10 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

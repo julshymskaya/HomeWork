@@ -6,11 +6,13 @@ public class UserOptional implements Cloneable {
     private int id;
     private String name;
     private int phoneNumber;
+    private User user;
 
-    public UserOptional(int id, String name, int phoneNumber) {
+    public UserOptional(int id, String name, int phoneNumber, User user) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.user = user;
     }
 
     @Override
@@ -18,12 +20,12 @@ public class UserOptional implements Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserOptional that = (UserOptional) o;
-        return id == that.id && phoneNumber == that.phoneNumber && Objects.equals(name, that.name);
+        return id == that.id && phoneNumber == that.phoneNumber && Objects.equals(name, that.name) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, phoneNumber);
+        return Objects.hash(id, name, phoneNumber, user);
     }
 
     @Override
@@ -31,7 +33,8 @@ public class UserOptional implements Cloneable {
         return "UserOptional{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", user=" + user +
                 '}';
     }
 
@@ -59,12 +62,22 @@ public class UserOptional implements Cloneable {
         this.phoneNumber = phoneNumber;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
-    public UserOptional deepClone() {
-        return new UserOptional(this.id, this.name, this.phoneNumber);
+    public UserOptional deepClone() throws CloneNotSupportedException {
+        UserOptional userOptional = (UserOptional) super.clone();
+        userOptional.user = (User) user.clone();
+        return userOptional;
     }
 }
